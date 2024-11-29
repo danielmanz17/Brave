@@ -1,3 +1,5 @@
+#Importing the nevessary libraries:
+
 import board
 from adafruit_seesaw import seesaw, rotaryio, digitalio
 from pythonosc import udp_client
