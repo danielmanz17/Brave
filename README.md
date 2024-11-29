@@ -1,5 +1,3 @@
-# Brave
-
 ![Logo designed for Brave synthesiser](braveLogo.png)
 
 Engineering an Embedded Network Bending Instrument, Manifesting Model Diversity in Neural Audio Synthesis
