@@ -10,7 +10,12 @@ Through a sequence of iterative user-feedback cycles, drawing from the Proof-Of-
 
 Blazej Kotowski is the first software engineer to open up the RAVE model and expose it to network-bending techniques. The artist/researcher present this work at the [Art Meets Radical Openness (AMRO) festival](https://radical-openness.org/en) in Linz, Austria. This work taps into this research, using [Kotowski’s network-bending fork](https://github.com/blazejkotowski/nn_tilde_bending) of the IRCAM [nn∼ repository](https://github.com/acids-ircam/RAVE). The decision was made to compile this work and embed it within a stand-alone instrument. The embedding is motivated by a Proof-Of-Concept (POC) exploration of embedded neural instruments, and to gauge how real-time neural synthesis can perform with current micro-computer technology. It is hoped that this POC can be scaled, motivating greater efficiency and reduced form factor as parallel processor architecture continues to advance. A Raspberry Pi 5 was chosen as the micro-computer of choice.
 
-The most significant technical hurdle at this point was managing dependencies, ensuring libraries align with the 64-bit Arm processor, and compiling the project. The network-bending fork was opened in a CMake environment, which was used for dependency management and build generation. A compatible version of libtorch was found on [Q-engineering](https://qengineering.eu/install%20pytorch%20on%20raspberry%20pi%205.html). CMake was configured for the 64-bit arm processor architecture. A full bash/CMake scipt, which can reproduce this embedding on other devices with the same architecture, can be found on the Brave project repository []. This builds a Pure Data external, which can then be opened in a new patch.
+The most significant technical hurdle at this point was managing dependencies, ensuring libraries align with the 64-bit Arm processor, and compiling the project. The network-bending fork was opened in a CMake environment, which was used for dependency management and build generation. A compatible version of libtorch was found on [Q-engineering](https://qengineering.eu/install%20pytorch%20on%20raspberry%20pi%205.html). CMake was configured for the 64-bit arm processor architecture. 
+
+The following code can be run in a Linux terminal to embed the network-bending fork.
+
+```bash
+ls -l
 
 ## Networking
 
