@@ -15,7 +15,33 @@ The most significant technical hurdle at this point was managing dependencies, e
 The following code can be run in a Linux terminal to embed the network-bending fork.
 
 ```bash
-ls -l
+# Install dependencies
+sudo apt update
+sudo apt install -y cmake build-essential git puredata puredata-dev python3 python3-pip
+
+# Download and install nn_tilde
+git clone https://github.com/blazejkotowski/nn_tilde_bending
+cd nn_tilde_bending
+
+# Download and install libtorch
+mkdir lib
+cd lib
+pip3 install setuptools numpy Cython
+pip3 install requests
+pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+cd ../
+
+# Setup Build
+#TORCH_DIR must correspond to where your torch install is located
+mkdir build
+cd build
+export Torch_DIR=../lib/libtorch/share/cmake/Torch
+cmake ../src/ -DCMAKE_BUILD_TYPE=Release
+
+# Build and copy to root dir
+# Note that this root directory can be replaced with a location of your choice
+make
+cp frontend/puredata/nn_tilde/nn~.pd_linux ../../
 ```
 
 ## Networking
