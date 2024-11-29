@@ -12,14 +12,15 @@ Blazej Kotowski is the first software engineer to open up the RAVE model and exp
 
 The most significant technical hurdle at this point was managing dependencies, ensuring libraries align with the 64-bit Arm processor, and compiling the project. The network-bending fork was opened in a CMake environment, which was used for dependency management and build generation. A compatible version of libtorch was found on [Q-engineering](https://qengineering.eu/install%20pytorch%20on%20raspberry%20pi%205.html). CMake was configured for the 64-bit arm processor architecture. 
 
-The following code can be run in a Linux terminal to embed the network-bending fork.
+The following code can be run in a Linux terminal to embed the network-bending fork. Note that before downloading torch and other packages, you must [activate a virtual environment](https://www.youtube.com/watch?v=DuyuAPJBEaE&t=100s). The most recent version of pure data was installed using [flathub](https://flathub.org/apps/info.puredata.Pd).
 
 ```bash
 # Install dependencies
 sudo apt update
 sudo apt install -y cmake build-essential git puredata puredata-dev python3 python3-pip
 
-# Download and install nn_tilde
+# Download and install nn_tilde fork
+# To download the original version of RAVE, change the URL
 git clone https://github.com/blazejkotowski/nn_tilde_bending
 cd nn_tilde_bending
 
