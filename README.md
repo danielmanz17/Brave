@@ -51,6 +51,12 @@ A networking solution is required to communicate between peripheral interface el
 
 ## Computational Architecture
 
+A Raspberry Pi 5 was selected as the micro-computer due to its 2.4GHz quad-core 64-bit Arm Cortex-A76 CPU, a [significant upgrade](https://www.pocket-lint.com/raspberry-pi-5-vs-4/) from the Raspberry Pi 4, and the possibility to upgrade to 8GB of RAM. A fan was installed as an active cooling mechanism to prevent thermal throttling - the patch is highly intensive on the CPU/RAM. The Raspberry Pi 5 DAC+ was installed, using the Texas Instruments PCM5122 DAC to deliver stereo analogue audio to a dedicated headphone amplifier, supporting 24‑bit 192kHz high-resolution digital audio. The DAC uses pass-through pins, meaning the peripheral interface elements were still able to attach to the GPIO pins.
+
+The Adafruit I2C QT Rotary Encoder breakout was used with a standard 24-pulse encoder. This uses the I2C Stemma QT communication protocol - a variant of the I2C protocol developed by Adafruit. The protocol uses JST SH 6-pin connectors and cables, allowing easy daisy-chaining of multiple devices without soldering. This reduces wiring complexity and minimises the use of GPIO pins. Pins 1-6 were used to establish this connection. A momentary button switch was connected to pins 13 and 14 (GND/5V). Finally, the Waveshare 4.3 inch DSI capacitive touchscreen LCD was attached via. the 4-lane MIPI DSI/CSI connector - capacitive was chosen over resistive due to higher sensitivity/UX considerations. The system diagram can be seen below:
+
+![systemDiagram](systemDiagram.png)
+
 **References**  
 
 [1] [Broad, T., Berns, S., Colton, S., and Grierson, M. Active divergence with generative deep learning - A survey and taxonomy. CoRR abs/2107.05599 (2021).](https://www.researchgate.net/publication/353208260_Active_Divergence_with_Generative_Deep_Learning_--_A_Survey_and_Taxonomy)
