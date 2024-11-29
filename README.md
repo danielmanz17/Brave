@@ -3,4 +3,4 @@ Engineering an Embedded Network Bending Instrument, Manifesting Model Diversity 
 
 This repository catalogues technical development/software components of "Brave": an embedded, electro-acoustic network-bending instrument. As neural audio synthesis advances, inadvertently becoming an agent of cultural construction, we face increased risk of cultural homogenisation - autophagous AI feedback cycles suppressing atypical expression. The work seeks to contribute to the "network bending" framework - the direct manipulation of internal ML architecture to promote active divergence [1] from this monolithic output. Through a sequence of iterative user-feedback cycles, drawing from the Proof-Of-Concept (POC) implementation of Media and Arts Technology (MAT) studies [2], I propose a user-centred, embedded network-bending device. The work, it is hoped, will benefit musicians wishing to integrate alternative ML methods into their practice, and engineers exploring embedded neural audio synthesis.
 
-## Refernces
+** References **
