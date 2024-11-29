@@ -47,6 +47,8 @@ cp frontend/puredata/nn_tilde/nn~.pd_linux ../../
 
 ## Networking
 
+A networking solution is required to communicate between peripheral interface elements and the Pure Data patch. OSC communication was chosen, leveraging UDP as transport layer, maintaining the low-latency characteristics needed for live-performance. Pure Data has in built functionality for this communication protocol This is implemented with 4 digital encoders which are mapped to network-bending parameters, and a switch which can reset the model/individual layers. The Python script can be found in the Brave repository under ["braveScript.py”](pythonScript\braveScript.py).
+
 ## Computational Architecture
 
 **References**  
