@@ -1,9 +1,6 @@
-#Importing the nevessary libraries:
-
 import board
 from adafruit_seesaw import seesaw, rotaryio, digitalio
 from pythonosc import udp_client
-from gpiozero import Button
 from time import time, sleep
 
 #Establsing I2C connection with rotary encoders:
@@ -28,32 +25,32 @@ qt_enc3.pin_mode(24, qt_enc3.INPUT_PULLUP)
 qt_enc4.pin_mode(24, qt_enc4.INPUT_PULLUP)
 qt_enc5.pin_mode(24, qt_enc5.INPUT_PULLUP)
 
-#Defining GPIO status of button:
+#Configure pin user to read encoder one button presses:
 
-button = Button(27)
+qt_enc1.pin_mode(24, qt_enc1.INPUT_PULLUP)
+button = digitalio.DigitalIO(qt_enc1, 24)
 
-#Threshold for single/double press detection:
-
-doubleInterval = 0.5
-lastPressTime = 0
+#Define threshold for a long press:
+press_threshold = 0.7
 
 #Function activated when button pressed:
 
 def buttonPressed():
-    global lastPressTime
-    currentTime = time()
-    if currentTime - lastPressTime <= doubleInterval and currentTime - lastPressTime >= 0.1:
-        client.send_message("/button", 2)
-        print("double")
-    else:
-        client.send_message("/button", 1)
-        print("single")
-        
-    lastPressTime = currentTime
     
-button.when_pressed = buttonPressed
-
-button_held = False
+    press_time = time()
+    
+    while not button.value:
+        sleep(0.1)
+        
+    release_time = time()
+    press_duration = release_time - press_time
+    
+    if press_duration >= press_threshold:
+        client.send_message("/button",2)
+        print("press")
+    else:
+        client.send_message("/button",1)
+        print("click")
 
 #Setting initial value for the rotary encoder:
 
@@ -67,6 +64,9 @@ encoder4 = rotaryio.IncrementalEncoder(qt_enc4)
 last_position4 = "0"
 encoder5 = rotaryio.IncrementalEncoder(qt_enc5)
 last_position5 = "0"
+
+#Tracking the button state:
+button_held = False
 
 while True:
     # negate the position to make clockwise rotation positive
@@ -119,6 +119,12 @@ while True:
         else:
             print("encoder five decreasing")
             client.send_message("/encoderFive", -1)
-        last_position5 = position5        
-    
+        last_position5 = position5
+        
+    if not button.value and not button_held:
+        button_pressed = True
+        buttonPressed()
+    elif button.value and button_held:
+        button_pressed = False
+        
     sleep(0.1)
